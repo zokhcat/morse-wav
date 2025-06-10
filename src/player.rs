@@ -26,8 +26,8 @@ pub fn play_from_morse(code: &str) {
                 sink.sleep_until_end();
                 sleep_ms(100);
             },
-            ' ' => thread::sleep(Duration::from_millis(300)), // letter gap
-            '/' => thread::sleep(Duration::from_millis(700)), // word gap
+            ' ' => thread::sleep(Duration::from_millis(300)),
+            '/' => thread::sleep(Duration::from_millis(700)),
             _ => {}
         }
     }
