@@ -19,14 +19,13 @@ chmod +x morse_wav
 
 ## Usage
 <br>
+
 ###### Translate a string
-<br>
 ```sh
 ./morse_wav text "climate change is a hoax, says oil lobby"
 ```
 
 ###### Morse code
-<br>
 ```sh
 ./morse_wav play ".... . .-.. .-.. ---"
 ```
