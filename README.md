@@ -11,15 +11,12 @@ note: as of now this works on linux.
 
 ## Requirements
 Download the morse_wav binary from the [releases](https://github.com/zokhcat/morse-wav/releases/tag/v0.0.1) page.
-
 ###### Make it executable
 ```sh
 chmod +x morse_wav
 ```
 
 ## Usage
-<br>
-
 ###### Translate a string
 ```sh
 ./morse_wav text "climate change is a hoax, says oil lobby"

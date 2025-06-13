@@ -3,12 +3,12 @@ pub mod morse;
 pub mod player;
 pub mod utils;
 
-use crate::player::{play_from_morse, play_morse_from_text};
+use crate::{morse::decode_morse, player::{play_from_morse, play_morse_from_text}};
 use clap::{command, Parser, Subcommand};
 
 #[derive(Parser)]
-#[command(name = "cdbe")]
-#[command(about = "A simple columnar database implementation", long_about = None)]
+#[command(name = "morse_wav")]
+#[command(about ="morse code encoder and decoder", long_about = None)]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
@@ -20,6 +20,9 @@ enum Commands {
         input: String,
     },
     Play {
+        code: String
+    },
+    Decode {
         code: String
     }
 }    
@@ -33,6 +36,10 @@ fn main() {
         }
         Commands::Play { code } => {
             play_from_morse(&code);
+        }
+        Commands::Decode { code } => {
+            let decoded_str = decode_morse(&code);
+            println!("Decoded string: {}", decoded_str);
         }
     }
 }

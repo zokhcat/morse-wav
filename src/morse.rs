@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 fn to_morse(c: char) -> Option<&'static str> {
     match c.to_ascii_uppercase() {
         'A' => Some(".-"),   'B' => Some("-..."), 'C' => Some("-.-."), 'D' => Some("-.."),
@@ -15,9 +17,33 @@ fn to_morse(c: char) -> Option<&'static str> {
     }
 }
 
+fn morse_decoder_map() -> HashMap<&'static str, char> {
+    HashMap::from([
+        (".-", 'A'),    ("-...", 'B'),  ("-.-.", 'C'),  ("-..", 'D'),
+        (".", 'E'),     ("..-.", 'F'),  ("--.", 'G'),   ("....", 'H'),
+        ("..", 'I'),    (".---", 'J'),  ("-.-", 'K'),   (".-..", 'L'),
+        ("--", 'M'),    ("-.", 'N'),    ("---", 'O'),   (".--.", 'P'),
+        ("--.-", 'Q'),  (".-.", 'R'),   ("...", 'S'),   ("-", 'T'),
+        ("..-", 'U'),   ("...-", 'V'),  (".--", 'W'),   ("-..-", 'X'),
+        ("-.--", 'Y'),  ("--..", 'Z'),
+        ("-----", '0'), (".----", '1'), ("..---", '2'), ("...--", '3'),
+        ("....-", '4'), (".....", '5'), ("-....", '6'), ("--...", '7'),
+        ("---..", '8'), ("----.", '9'),
+        ("/", ' '),
+    ])
+}
+
 pub fn encode_string(input: &str) -> String {
     input.chars()
          .filter_map(to_morse)
          .collect::<Vec<_>>()
          .join(" ")
+}
+
+pub fn decode_morse(input: &str) -> String {
+    let morse_map = morse_decoder_map();
+    input
+        .split_whitespace()
+        .map(|code| morse_map.get(code).cloned().unwrap_or('?'))
+        .collect()
 }
