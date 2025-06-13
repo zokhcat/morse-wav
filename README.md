@@ -26,3 +26,8 @@ chmod +x morse_wav
 ```sh
 ./morse_wav play ".... . .-.. .-.. ---"
 ```
+
+###### Decode a Morse
+```sh
+./morse_wav decode ".... . .-.. .-.. --- / .-- --- .-. .-.. -.."
+```
